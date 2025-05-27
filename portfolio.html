@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panchami B S | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and basics */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fa;
+      color: #222;
+      min-height: 100vh;
+      line-height: 1.6;
+      padding: 0 1rem;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    nav {
+      max-width: 900px;
+      margin: 1.5rem auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(150, 150, 180, 0.2);
+      position: sticky;
+      top: 10px;
+      z-index: 1000;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    nav.dark {
+      background: #121424;
+      box-shadow: 0 0 12px #764ba2aa;
+    }
+
+    nav strong {
+      font-size: 1.5rem;
+      color: #6c63ff;
+      letter-spacing: 1px;
+      user-select: none;
+      transition: color 0.4s ease;
+    }
+
+    nav.dark strong {
+      color: #9b78f8;
+    }
+
+    nav a {
+      color: #555;
+      margin: 0 0.6rem;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 3px;
+      transition: color 0.3s ease;
+    }
+
+    nav.dark a {
+      color: #bbbfff;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: #6c63ff;
+      transition: width 0.3s ease;
+    }
+
+    nav.dark a::after {
+      background: #9b78f8;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      color: #6c63ff;
+    }
+
+    nav.dark a:hover,
+    nav.dark a:focus {
+      color: #d4cfff;
+    }
+
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+
+    .button {
+      background: transparent;
+      border: 2px solid #6c63ff;
+      color: #6c63ff;
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    .button:hover {
+      background: #6c63ff;
+      color: #fff;
+    }
+
+    header,
+    section {
+      max-width: 900px;
+      background: #fff;
+      margin: 2.5rem auto;
+      padding: 2.5rem 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 25px rgba(150, 150, 180, 0.15);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards;
+      transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    header {
+      animation-delay: 0.2s;
+    }
+    section:nth-of-type(1) {
+      animation-delay: 0.4s;
+    }
+    section:nth-of-type(2) {
+      animation-delay: 0.6s;
+    }
+    section:nth-of-type(3) {
+      animation-delay: 0.8s;
+    }
+    section:nth-of-type(4) {
+      animation-delay: 1s;
+    }
+    section:nth-of-type(5) {
+      animation-delay: 1.2s;
+    }
+
+    nav.dark ~ header,
+    nav.dark ~ section,
+    body.dark-mode header,
+    body.dark-mode section {
+      background: #121424;
+      box-shadow: 0 0 20px #764ba2cc;
+      color: #d4cfff;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #333;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      transition: color 0.4s ease;
+    }
+
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3 {
+      color: #d4cfff;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      letter-spacing: 1.3px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      border-left: 6px solid #6c63ff;
+      padding-left: 0.6rem;
+    }
+
+    body.dark-mode h2 {
+      border-left-color: #9b78f8;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #444;
+      transition: color 0.4s ease;
+    }
+
+    body.dark-mode p {
+      color: #bdbdff;
+    }
+
+    ul {
+      list-style: none;
+      margin-left: 1rem;
+      margin-bottom: 1rem;
+      color: #666;
+      transition: color 0.4s ease;
+    }
+
+    body.dark-mode ul {
+      color: #aaaaff;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.2rem;
+      font-weight: 500;
+    }
+
+    ul li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: #6c63ff;
+      font-weight: 900;
+      font-size: 1rem;
+      line-height: 1;
+      transition: color 0.4s ease;
+    }
+
+    body.dark-mode ul li::before {
+      color: #9b78f8;
+    }
+
+    .project-card {
+      background: #fefefe;
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 3px 10px rgba(140, 140, 180, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
+      border-left: 5px solid #6c63ff;
+      cursor: default;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 20px rgba(108, 99, 255, 0.3);
+    }
+
+    body.dark-mode .project-card {
+      background: #1b1d34;
+      box-shadow: 0 0 15px #9b78f833;
+      border-left-color: #9b78f8;
+    }
+
+    body.dark-mode .project-card:hover {
+      box-shadow: 0 0 30px #9b78f8cc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #999;
+      font-size: 0.9rem;
+      user-select: none;
+      max-width: 900px;
+      margin: 3rem auto 1rem auto;
+      transition: color 0.4s ease;
+    }
+
+    body.dark-mode footer {
+      color: #7a6fb3;
+    }
+
+    a {
+      color: #6c63ff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover,
+    a:focus {
+      color: #4e47e1;
+      text-decoration: underline;
+    }
+
+    body.dark-mode a {
+      color: #9b78f8;
+    }
+
+    body.dark-mode a:hover,
+    body.dark-mode a:focus {
+      color: #d4cfff;
+    }
+
+    /* Dark mode toggle button style */
+    .dark-toggle {
+      font-size: 1.3rem;
+      padding: 0.1rem 0.6rem 0 0.6rem;
+      background: transparent;
+      border: none;
+      color: #6c63ff;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    .dark-toggle:hover {
+      color: #4e47e1;
+    }
+    body.dark-mode .dark-toggle {
+      color: #9b78f8;
+    }
+    body.dark-mode .dark-toggle:hover {
+      color: #d4cfff;
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <strong>Panchami B S</strong>
+    <div>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <button class="dark-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">🌓</button>
+    </div>
+  </nav>
+
+  <header class="intro">
+    <h1>Hi, I'm Panchami B S 👋</h1>
+    <p>A passionate developer specializing in AI, web development, and cybersecurity. I’m enthusiastic about creating impactful digital experiences and solving complex problems using technology.</p>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a Computer Science Engineer from SDM Institute of Technology with a CGPA of 9.47. I thrive on learning new technologies and applying them to real-world challenges. 
+    </p>
+    <p>
+      My expertise includes full-stack development, artificial intelligence, machine learning, and cybersecurity. I have completed internships at Agile Minds IT Solutions and Vault of Codes where I worked on diverse projects ranging from web applications to AI-driven tools.
+    </p>
+    <p>
+      Outside of coding, I enjoy exploring the latest tech trends, contributing to open-source, and collaborating with like-minded innovators to build smarter solutions.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Programming Languages: C, Java, Python, Verilog</li>
+      <li>Frameworks & Libraries: AngularJS, Django, Bootstrap</li>
+      <li>Technologies: AI, Machine Learning, Prompt Engineering</li>
+      <li>Databases & Tools: MySQL, SQLite, VS Code, Eclipse</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>AI-Assisted Handwritten Evaluation</h3>
+      <p>Developed an AI-powered system using Gemini AI, OCR, and Streamlit to automate grading of handwritten answer sheets, significantly reducing evaluation time.</p>
+    </div>
+    <div class="project-card">
+      <h3>Law and Rights Chatbot</h3>
+      <p>Created a legal chatbot using Python and Gemini LLM with Streamlit, designed to provide users with instant, reliable legal guidance.</p>
+    </div>
+    <div class="project-card">
+      <h3>Online Bookstore & E-Commerce</h3>
+      <p>Built a comprehensive online bookstore with admin and user dashboards using HTML, CSS, JDBC, and MySQL for seamless inventory and sales management.</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <p><strong>Agile Minds IT Solutions</strong> – Internship (HTML, CSS, Java, MySQL)<br />
+    Gained hands-on experience developing responsive websites and working with databases to support business needs.</p>
+    <p><strong>Vault of Codes</strong> – Internship in AI, Web Dev, and Cybersecurity<br />
+    Contributed to AI projects, implemented cybersecurity best practices, and developed full-stack web applications.</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:panchami@example.com">panchami@example.com</a></p>
+    <p>GitHub: <a href="https://github.com/Rixxxy" target="_blank" rel="noopener noreferrer">github.com/Rixxxy</a></p>
+    <p>LinkedIn: <a href="#" target="_blank" rel="noopener noreferrer">linkedin.com/in/panchami</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Panchami B S. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      document.getElementById('navbar').classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
